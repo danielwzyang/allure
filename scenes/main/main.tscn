@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cubj4o8ukcjq6"]
+
+[ext_resource type="Shader" uid="uid://ds3c2ofgb2jgt" path="res://scenes/main/pixelated.gdshader" id="1_2nl6f"]
+[ext_resource type="PackedScene" uid="uid://d4c3vo8k7n2kt" path="res://objects/trace/trace.tscn" id="2_iuonh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuonh"]
+shader = ExtResource("1_2nl6f")
+shader_parameter/pixelSize = 8.0
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="Canvas" type="CanvasLayer" parent="Camera"]
+
+[node name="PixelatedShader" type="ColorRect" parent="Camera/Canvas"]
+material = SubResource("ShaderMaterial_iuonh")
+offset_right = 1024.0
+offset_bottom = 576.0
+
+[node name="Trace" parent="." instance=ExtResource("2_iuonh")]
