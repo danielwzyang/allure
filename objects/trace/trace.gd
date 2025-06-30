@@ -1,6 +1,8 @@
 extends Line2D
 
-@export var spacing = 5
+signal finished_tracing
+
+@export var spacing = 2
 
 var drawing = false
 
@@ -9,8 +11,8 @@ func _input(event):
 		clear_points()
 		drawing = true
 	elif event.is_action_released("draw"):
-		clear_points()
 		drawing = false
+		emit_signal("finished_tracing")
 
 func _process(delta):
 	if drawing:
